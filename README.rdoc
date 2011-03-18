@@ -5,6 +5,7 @@ Provides a wrapper around the Adobe Scene 7 SOAP API.
 = Contributors
 
 * Brian Rose (heimidal)
+* Jim Whiteman (jwhiteman)
 
 == Contributing to scene7-wrapper
  
