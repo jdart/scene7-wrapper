@@ -1,0 +1,1 @@
+<?xml version='1.0' encoding='UTF-8'?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><getAssetsByNameReturn xmlns="http://www.scene7.com/IpsApi/xsd/2010-01-31"><assetArray /></getAssetsByNameReturn></soapenv:Body></soapenv:Envelope>

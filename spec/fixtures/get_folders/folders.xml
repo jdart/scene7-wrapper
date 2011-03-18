@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<soapenv:Body>
+		<getFoldersReturn xmlns="http://www.scene7.com/IpsApi/xsd/2010-01-31">
+			<folderArray>
+				
+				<items>
+					<folderHandle>handle-1</folderHandle>
+					<path>folder-path-1</path>
+					<lastModified>20080726T08:36:19.19305:00</lastModified>
+					<childLastModified>20110308T18:43:20.92706:00</childLastModified>
+					<hasSubfolders>true</hasSubfolders>
+				</items>
+				
+				<items>
+					<folderHandle>handle-2</folderHandle>
+					<path>folder-path-2</path>
+					<lastModified>20110225T13:45:53.55306:00</lastModified>
+					<childLastModified>20110309T21:49:58.21606:00</childLastModified>
+					<hasSubfolders>false</hasSubfolders>
+				</items>
+				
+			</folderArray>
+		</getFoldersReturn>
+	</soapenv:Body>
+</soapenv:Envelope>

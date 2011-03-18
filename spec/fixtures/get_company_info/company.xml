@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <soapenv:Body>
+    <getCompanyInfoReturn xmlns="http://www.scene7.com/IpsApi/xsd/2010-01-31">
+      <companyInfo>
+        <companyHandle>111</companyHandle>
+        <name>Example.com</name>
+        <rootPath>Example.com/</rootPath>
+        <expires>2100-12-31T23:00:00.000-06:00</expires>
+      </companyInfo>
+    </getCompanyInfoReturn>
+  </soapenv:Body>
+</soapenv:Envelope>
