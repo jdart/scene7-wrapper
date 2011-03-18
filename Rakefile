@@ -16,7 +16,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/factorylabs/scene7-wrapper"
   gem.license = "MIT"
   gem.summary = %Q{A Scene7 wrapper for Rails 3.x apps.}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.description = %Q{A Scene7 wrapper for Rails 3.x apps.}
   gem.email = "brian.rose@factorylabs.com"
   gem.authors = ["Brian Rose", "Jim Whiteman"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
