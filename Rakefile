@@ -15,7 +15,7 @@ Jeweler::Tasks.new do |gem|
   gem.name = "scene7-wrapper"
   gem.homepage = "http://github.com/factorylabs/scene7-wrapper"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
+  gem.summary = %Q{A Scene7 wrapper for Rails 3.x apps.}
   gem.description = %Q{TODO: longer description of your gem}
   gem.email = "brian.rose@factorylabs.com"
   gem.authors = ["Brian Rose", "Jim Whiteman"]

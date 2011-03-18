@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{scene7-wrapper}
-  s.version = "0.0.0"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Brian Rose", "Jim Whiteman"]
-  s.date = %q{2011-03-16}
+  s.date = %q{2011-03-18}
   s.description = %q{TODO: longer description of your gem}
   s.email = %q{brian.rose@factorylabs.com}
   s.extra_rdoc_files = [
@@ -33,6 +33,7 @@ Gem::Specification.new do |s|
     "lib/scene7/config.rb",
     "lib/scene7/crop.rb",
     "lib/scene7/folder.rb",
+    "scene7-wrapper.gemspec",
     "spec/file_fixtures/fpo.jpg",
     "spec/fixtures/create_folder/folder.xml",
     "spec/fixtures/delete_asset/success.xml",
@@ -52,11 +53,6 @@ Gem::Specification.new do |s|
     "spec/scene7/company_spec.rb",
     "spec/scene7/config_spec.rb",
     "spec/scene7/crop_spec.rb",
-    "spec/scene7/fdl_only/README.txt",
-    "spec/scene7/fdl_only/asset_spec.rb",
-    "spec/scene7/fdl_only/company_spec.rb",
-    "spec/scene7/fdl_only/fdl_only_helper.rb",
-    "spec/scene7/fdl_only/folder_spec.rb",
     "spec/scene7/folder_spec.rb",
     "spec/spec_helper.rb"
   ]
@@ -64,17 +60,13 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.5.0}
-  s.summary = %q{TODO: one-line summary of your gem}
+  s.summary = %q{A Scene7 wrapper for Rails 3.x apps.}
   s.test_files = [
     "spec/scene7/asset_spec.rb",
     "spec/scene7/client_spec.rb",
     "spec/scene7/company_spec.rb",
     "spec/scene7/config_spec.rb",
     "spec/scene7/crop_spec.rb",
-    "spec/scene7/fdl_only/asset_spec.rb",
-    "spec/scene7/fdl_only/company_spec.rb",
-    "spec/scene7/fdl_only/fdl_only_helper.rb",
-    "spec/scene7/fdl_only/folder_spec.rb",
     "spec/scene7/folder_spec.rb",
     "spec/spec_helper.rb"
   ]
