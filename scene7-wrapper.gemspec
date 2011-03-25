@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Brian Rose", "Jim Whiteman"]
-  s.date = %q{2011-03-18}
-  s.description = %q{TODO: longer description of your gem}
+  s.date = %q{2011-03-25}
+  s.description = %q{A Scene7 wrapper for Rails 3.x apps.}
   s.email = %q{brian.rose@factorylabs.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -47,6 +47,7 @@ Gem::Specification.new do |s|
     "spec/fixtures/get_folders/folders.xml",
     "spec/fixtures/rename_asset/failure.xml",
     "spec/fixtures/rename_asset/success.xml",
+    "spec/fixtures/submit_job/image_serving_publish_job_response.xml",
     "spec/fixtures/submit_job/upload_urls_job_response.xml",
     "spec/scene7/asset_spec.rb",
     "spec/scene7/client_spec.rb",
@@ -61,15 +62,6 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.5.0}
   s.summary = %q{A Scene7 wrapper for Rails 3.x apps.}
-  s.test_files = [
-    "spec/scene7/asset_spec.rb",
-    "spec/scene7/client_spec.rb",
-    "spec/scene7/company_spec.rb",
-    "spec/scene7/config_spec.rb",
-    "spec/scene7/crop_spec.rb",
-    "spec/scene7/folder_spec.rb",
-    "spec/spec_helper.rb"
-  ]
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
