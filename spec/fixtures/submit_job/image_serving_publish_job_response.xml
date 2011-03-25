@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <soapenv:Body>
+    <submitJobReturn xmlns="http://www.scene7.com/IpsApi/xsd/2010-01-31">
+      <jobHandle>j|110|test-publish-job-fdl||</jobHandle>
+    </submitJobReturn>
+  </soapenv:Body>
+</soapenv:Envelope>

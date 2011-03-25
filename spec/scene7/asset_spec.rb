@@ -99,7 +99,7 @@ describe Scene7::Asset do
         }
         },
           :overwrite          => false,
-          :ready_for_publish  => false,
+          :ready_for_publish  => true,
           :create_mask        => false,
           :email_setting      => "None",
           :order!           => [:url_array, :overwrite, :ready_for_publish, :create_mask, :email_setting]
@@ -113,13 +113,6 @@ describe Scene7::Asset do
         Scene7::Asset.stubs(:find_by_name).with("image").returns(nil, asset_mock)
         asset = subject.create(:source_url => "http://example.com/image.jpg", :dest_path => "SomeRoot/SomeDirectory/image.jpg")
         asset.should == asset_mock
-      end
-
-      it "gives up and assumes an error after 20 seconds" do
-        asset_mock = mock()
-        Scene7::Asset.stubs(:find_by_name).with("image").returns(nil)
-
-        expect { subject.create(:source_url => "http://example.com/image.jpg", :dest_path => "SomeRoot/SomeDirectory/image.jpg") }.to raise_error("Could not create asset")
       end
     end
 
@@ -192,4 +185,27 @@ describe Scene7::Asset do
       subject.destroy.should be_true
     end
   end
+  
+  describe "publish" do
+     before { Scene7::Client.configure(valid_config) }
+     subject { Scene7::Asset }
+     
+     it "publishes to the enterprise internet-ready environment" do
+       subject.stubs(:job_name).returns("12345678901234567890")
+       Scene7::Client.expects(:company_handle).returns("111")
+       
+       savon.expects(:submit_job).with({
+          :company_handle        => "111", 
+          :job_name              => "12345678901234567890",
+          :image_serving_publish_job  => {
+            :publish_type          => "Full",
+            :email_setting         => "None",
+            :order!                => [:publish_type, :email_setting]
+          }, 
+          :order!           => [:company_handle, :job_name, :image_serving_publish_job] 
+       }).returns(:image_serving_publish_job_response)
+       
+       subject.publish
+     end
+   end
 end

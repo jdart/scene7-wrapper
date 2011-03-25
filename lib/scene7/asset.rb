@@ -38,7 +38,7 @@ module Scene7
               }
             },
             :overwrite          => false,
-            :ready_for_publish  => false,
+            :ready_for_publish  => true,
             :create_mask        => false,
             :email_setting      => "None",
             :order!           => [:url_array, :overwrite, :ready_for_publish, :create_mask, :email_setting]
@@ -62,6 +62,21 @@ module Scene7
 
       def job_name(name)
         Digest::SHA1.hexdigest("#{name}#{Time.now.usec}")[0..20]
+      end
+      
+      def publish
+        request = {
+          :company_handle        => Client.company_handle,
+          :job_name              => job_name("publish-"),
+          :image_serving_publish_job  => {
+            :publish_type          => "Full",
+            :email_setting         => "None",
+            :order!                => [:publish_type, :email_setting]
+          }, 
+          :order!           => [:company_handle, :job_name, :image_serving_publish_job]
+        }
+
+        Client.perform_request(:submit_job, request)
       end
     end
 
