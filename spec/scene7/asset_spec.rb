@@ -98,7 +98,7 @@ describe Scene7::Asset do
           :order!                => [:source_url, :dest_path]
         }
         },
-          :overwrite          => false,
+          :overwrite          => true,
           :ready_for_publish  => true,
           :create_mask        => false,
           :email_setting      => "None",
