@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{scene7-wrapper}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Brian Rose", "Jim Whiteman"]
-  s.date = %q{2011-03-25}
+  s.date = %q{2011-03-30}
   s.description = %q{A Scene7 wrapper for Rails 3.x apps.}
   s.email = %q{brian.rose@factorylabs.com}
   s.extra_rdoc_files = [
@@ -38,6 +38,8 @@ Gem::Specification.new do |s|
     "spec/fixtures/create_folder/folder.xml",
     "spec/fixtures/delete_asset/success.xml",
     "spec/fixtures/delete_folder/empty_response.xml",
+    "spec/fixtures/get_active_jobs/no_publish_job.xml",
+    "spec/fixtures/get_active_jobs/one_publish_job.xml",
     "spec/fixtures/get_assets/all_assets.xml",
     "spec/fixtures/get_assets_by_name/hat_asset.xml",
     "spec/fixtures/get_assets_by_name/jacket_asset.xml",
@@ -47,6 +49,7 @@ Gem::Specification.new do |s|
     "spec/fixtures/get_folders/folders.xml",
     "spec/fixtures/rename_asset/failure.xml",
     "spec/fixtures/rename_asset/success.xml",
+    "spec/fixtures/stop_job/response.xml",
     "spec/fixtures/submit_job/image_serving_publish_job_response.xml",
     "spec/fixtures/submit_job/upload_urls_job_response.xml",
     "spec/scene7/asset_spec.rb",
