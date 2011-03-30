@@ -103,8 +103,8 @@ describe Scene7::Asset do
           :create_mask        => false,
           :email_setting      => "None",
           :order!           => [:url_array, :overwrite, :ready_for_publish, :create_mask, :email_setting]
-        }, 
-          :order!           => [:company_handle, :job_name, :upload_urls_job] 
+        },
+          :order!           => [:company_handle, :job_name, :upload_urls_job]
         }).returns(:upload_urls_job_response)
       end
 
@@ -185,27 +185,77 @@ describe Scene7::Asset do
       subject.destroy.should be_true
     end
   end
-  
+
   describe "publish" do
      before { Scene7::Client.configure(valid_config) }
      subject { Scene7::Asset }
-     
+
      it "publishes to the enterprise internet-ready environment" do
        subject.stubs(:job_name).returns("12345678901234567890")
        Scene7::Client.expects(:company_handle).returns("111")
-       
+
        savon.expects(:submit_job).with({
-          :company_handle        => "111", 
-          :job_name              => "12345678901234567890",
-          :image_serving_publish_job  => {
-            :publish_type          => "Full",
-            :email_setting         => "None",
-            :order!                => [:publish_type, :email_setting]
-          }, 
-          :order!           => [:company_handle, :job_name, :image_serving_publish_job] 
+         :company_handle             => "111",
+         :job_name                   => "12345678901234567890",
+         :image_serving_publish_job  => {
+           :publish_type             => "Full",
+           :email_setting            => "None",
+           :order!                   => [:publish_type, :email_setting]
+         },
+         :order! => [:company_handle, :job_name, :image_serving_publish_job]
        }).returns(:image_serving_publish_job_response)
-       
+
        subject.publish
      end
    end
+
+  describe ".current_publish_job" do
+     before { Scene7::Client.configure(valid_config) }
+     subject { Scene7::Asset }
+
+     it "gets the current job handle from any publish jobs running" do
+       Scene7::Client.expects(:company_handle).returns("111")
+
+       savon.expects(:get_active_jobs).with({
+         :company_handle => "111",
+       }).returns(:one_publish_job)
+
+       subject.current_publish_job.should == 'j|110||b4ab644caf2b8d253b0a5_2011-03-30-14:32:12.645|5129822'
+     end
+
+     it "returns nil if there's no publish job running" do
+       Scene7::Client.expects(:company_handle).returns("111")
+
+       savon.expects(:get_active_jobs).with({
+         :company_handle => "111",
+       }).returns(:no_publish_job)
+
+       subject.current_publish_job.should == nil
+     end
+
+   end
+
+  describe ".stop_publish_job" do
+    before { Scene7::Client.configure(valid_config) }
+    subject { Scene7::Asset }
+
+    it "gets the current job handle from any publish jobs running" do
+      Scene7::Client.expects(:company_handle).times(2).returns("111")
+
+      savon.expects(:get_active_jobs).with({
+        :company_handle => "111",
+      }).returns(:one_publish_job)
+
+      savon.expects(:stop_job).with({
+        :company_handle => '111',
+        :job_handle     => 'j|110||b4ab644caf2b8d253b0a5_2011-03-30-14:32:12.645|5129822',
+        :order!         => [:company_handle, :job_handle]
+      }).returns(:response)
+
+      subject.stop_publish_job
+    end
+
+  end
+
+
 end

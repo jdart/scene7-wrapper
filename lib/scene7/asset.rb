@@ -27,7 +27,7 @@ module Scene7
         dest_path  = params.delete(:dest_path)
 
         request = {
-          :company_handle   => Client.company_handle, 
+          :company_handle   => Client.company_handle,
           :job_name         => job_name(source_url),
           :upload_urls_job  => {
             :url_array => {
@@ -42,8 +42,8 @@ module Scene7
             :create_mask        => false,
             :email_setting      => "None",
             :order!           => [:url_array, :overwrite, :ready_for_publish, :create_mask, :email_setting]
-          }, 
-          :order!           => [:company_handle, :job_name, :upload_urls_job] 
+          },
+          :order!           => [:company_handle, :job_name, :upload_urls_job]
         }
 
         Client.perform_request(:submit_job, request)
@@ -63,20 +63,37 @@ module Scene7
       def job_name(name)
         Digest::SHA1.hexdigest("#{name}#{Time.now.usec}")[0..20]
       end
-      
+
+      def stop_publish_job
+        if job_handle = current_publish_job
+          Client.perform_request(:stop_job, {
+            :company_handle => Client.company_handle,
+            :job_handle     => job_handle,
+            :order!         => [:company_handle, :job_handle]
+          })
+        end
+      end
+
+      def current_publish_job
+        response = Client.perform_request(:get_active_jobs, {
+          :company_handle => Client.company_handle
+        })
+
+        publish_jobs = response.to_hash[:get_active_jobs_return][:job_array][:items].detect{ |item| item[:image_serving_publish_job] } rescue []
+        publish_jobs[:job_handle] rescue nil
+      end
+
       def publish
-        request = {
+        Client.perform_request(:submit_job, {
           :company_handle        => Client.company_handle,
           :job_name              => job_name("publish-"),
           :image_serving_publish_job  => {
             :publish_type          => "Full",
             :email_setting         => "None",
             :order!                => [:publish_type, :email_setting]
-          }, 
+          },
           :order!           => [:company_handle, :job_name, :image_serving_publish_job]
-        }
-
-        Client.perform_request(:submit_job, request)
+        })
       end
     end
 
@@ -112,7 +129,7 @@ module Scene7
 
     def destroy
       response = Client.perform_request(:delete_asset, :company_handle => Client.company_handle, :asset_handle => handle, :order! => [:company_handle, :asset_handle])
-      return response.http.code == 200
+      response.http.code == 200
     end
 
   end
