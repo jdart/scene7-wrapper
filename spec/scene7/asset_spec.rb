@@ -108,11 +108,8 @@ describe Scene7::Asset do
         }).returns(:upload_urls_job_response)
       end
 
-      it "returns once the image object exists" do
-        asset_mock = mock()
-        Scene7::Asset.stubs(:find_by_name).with("image").returns(nil, asset_mock)
-        asset = subject.create(:source_url => "http://example.com/image.jpg", :dest_path => "SomeRoot/SomeDirectory/image.jpg")
-        asset.should == asset_mock
+      it "makes the soap call to start the job" do
+        subject.create(:source_url => "http://example.com/image.jpg", :dest_path => "SomeRoot/SomeDirectory/image.jpg")
       end
     end
 

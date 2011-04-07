@@ -47,17 +47,6 @@ module Scene7
         }
 
         Client.perform_request(:submit_job, request)
-
-        asset = nil
-        1.upto(20) do
-          break if asset
-          sleep 1
-          asset = find_by_name(File.basename(dest_path, File.extname(dest_path)))
-        end
-
-        raise "Could not create asset" if asset.nil?
-
-        asset
       end
 
       def job_name(name)
