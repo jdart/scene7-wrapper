@@ -7,7 +7,7 @@ module Scene7
     end
 
     def self.format_url_params(params)
-      "scl=#{params[:scale_factor]}&crop=#{params[:x].round},#{params[:y].round},#{params[:width].round},#{params[:height].round}"
+      "scl=#{params[:scale_factor]}&crop=#{params[:x].round},#{params[:y].round},#{params[:width].round},#{params[:height].round}&qlt=#{params[:quality] || 95}"
     end
 
     def self.convert_params_from_scale_first(orig_params)
@@ -18,6 +18,7 @@ module Scene7
         params[:width] = orig_params[:width].to_f / scale_factor
         params[:x] = orig_params[:x].to_f / scale_factor
         params[:y] = orig_params[:y].to_f / scale_factor
+        params[:quality] = orig_params[:quality] if orig_params[:quality]
       end
     end
   end

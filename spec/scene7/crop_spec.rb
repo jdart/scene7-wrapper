@@ -12,8 +12,23 @@ describe Scene7::Crop do
       :width => 250.2
     } }
 
-    it 'includes the scale and scale factor' do
-      subject.format_url_params(params).should == "scl=0.5&crop=50,100,250,150"
+    it 'includes the scale and scale factor and defaults the quality to 95' do
+      subject.format_url_params(params).should == "scl=0.5&crop=50,100,250,150&qlt=95"
+    end
+
+    context "when quality is specified" do
+      let(:params) { {
+        :scale_factor => 0.5,
+        :x => 50.0,
+        :y => 100.1,
+        :height => 149.8,
+        :width => 250.2,
+        :quality => 70
+      } }
+
+      it "includes the appropriate quality" do
+        subject.format_url_params(params).should == "scl=0.5&crop=50,100,250,150&qlt=70"
+      end
     end
   end
 
@@ -28,7 +43,22 @@ describe Scene7::Crop do
 
     describe ".convert_from_scale_first_and_format" do
       it "converts, then formats" do
-        subject.convert_from_scale_first_and_format(params).should == "scl=0.5&crop=50,125,225,150"
+        subject.convert_from_scale_first_and_format(params).should == "scl=0.5&crop=50,125,225,150&qlt=95"
+      end
+
+      context "with quality specified" do
+        let(:params) { {
+          :scale_factor => '2.0',
+          :x => '100',
+          :y => '250',
+          :height => '300',
+          :width => '450',
+          :quality => '70'
+        } }
+
+        it "converts, then formats" do
+          subject.convert_from_scale_first_and_format(params).should == "scl=0.5&crop=50,125,225,150&qlt=70"
+        end
       end
     end
 
