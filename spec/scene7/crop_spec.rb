@@ -87,6 +87,11 @@ describe Scene7::Crop do
       it "converts the top coordinate from the scale-first style" do
         @result[:y].should == 125
       end
+
+      it "accepts additional params" do
+        @result = subject.convert_params_from_scale_first(params, {:extra => true})
+        @result[:extra].should == true
+      end
     end
   end
 end

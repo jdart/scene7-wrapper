@@ -10,7 +10,7 @@ module Scene7
       "scl=#{params[:scale_factor]}&crop=#{params[:x].round},#{params[:y].round},#{params[:width].round},#{params[:height].round}&qlt=#{params[:quality] || 95}"
     end
 
-    def self.convert_params_from_scale_first(orig_params)
+    def self.convert_params_from_scale_first(orig_params, additional_params = {})
       {}.tap do |params|
         scale_factor = orig_params[:scale_factor].to_f
         params[:scale_factor] = 1.0 / scale_factor
@@ -19,7 +19,7 @@ module Scene7
         params[:x] = orig_params[:x].to_f / scale_factor
         params[:y] = orig_params[:y].to_f / scale_factor
         params[:quality] = orig_params[:quality] if orig_params[:quality]
-      end
+      end.merge!(additional_params)
     end
   end
 end
