@@ -57,8 +57,9 @@ describe Scene7::Crop do
         } }
 
         it "converts, then formats" do
-          subject.convert_from_scale_first_and_format(params).should == "scl=0.5&crop=50,125,225,150&qlt=70"
+          subject.convert_from_scale_first_and_format(params, :extra => true).should == "scl=0.5&crop=50,125,225,150&qlt=70&extra=true"
         end
+
       end
     end
 
@@ -86,11 +87,6 @@ describe Scene7::Crop do
 
       it "converts the top coordinate from the scale-first style" do
         @result[:y].should == 125
-      end
-
-      it "accepts additional params" do
-        @result = subject.convert_params_from_scale_first(params, {:extra => true})
-        @result[:extra].should == true
       end
     end
   end
