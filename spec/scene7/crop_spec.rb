@@ -13,7 +13,7 @@ describe Scene7::Crop do
     } }
 
     it 'includes the scale and scale factor and defaults the quality to 95' do
-      subject.format_url_params(params).should == "scl=0.5&crop=50,100,250,150&qlt=95"
+      subject.format_url_params(params).should == "scl=0.5&crop=50,100,250,150&qlt="
     end
 
     context "when quality is specified" do
