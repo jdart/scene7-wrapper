@@ -2,8 +2,8 @@ require 'active_support/core_ext'
 
 module Scene7
   module Crop
-    def self.convert_from_scale_first_and_format(params)
-      format_url_params convert_params_from_scale_first(params)
+    def self.convert_from_scale_first_and_format(params, additional_params = {})
+      format_url_params convert_params_from_scale_first(params, additional_params)
     end
 
     def self.format_url_params(params)
