@@ -30,6 +30,8 @@ module Scene7
 
       def perform_request(action, body_params)
         client.request(:ns, action) do
+          http.auth.ssl.verify_mode = :none
+
           soap.input  = [input_for_action(action), {:xmlns => "http://www.scene7.com/IpsApi/xsd/2010-01-31" }]
           soap.header = header
           soap.body   = body_params
