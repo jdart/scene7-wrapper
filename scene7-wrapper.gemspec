@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{scene7-wrapper}
-  s.version = "0.3.4"
+  s.version = "0.3.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Brian Rose", "Jim Whiteman"]
-  s.date = %q{2011-04-13}
+  s.date = %q{2011-07-11}
   s.description = %q{A Scene7 wrapper for Rails 3.x apps.}
   s.email = %q{brian.rose@factorylabs.com}
   s.extra_rdoc_files = [
@@ -63,7 +63,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/factorylabs/scene7-wrapper}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
+  s.rubygems_version = %q{1.5.0}
   s.summary = %q{A Scene7 wrapper for Rails 3.x apps.}
 
   if s.respond_to? :specification_version then
