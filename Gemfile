@@ -7,14 +7,16 @@ gem 'i18n'
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
-group :development do
+group :development, :test do
   gem "shoulda", ">= 0"
-  gem "bundler", "~> 1.0.0"
-  gem "jeweler", "~> 1.5.2"
   gem "rspec"
   gem "savon_spec"
   gem "mocha"
+  gem 'timecop'
+end
+
+group :development do
   gem "ruby-debug", :platform => :mri_18
   gem "ruby-debug19", :platform => :mri_19
-  gem 'timecop'
+  gem "jeweler", "~> 1.5.2"
 end
