@@ -14,6 +14,7 @@ group :development do
   gem "rspec"
   gem "savon_spec"
   gem "mocha"
-  gem "ruby-debug"
+  gem "ruby-debug", :platform => :mri_18
+  gem "ruby-debug19", :platform => :mri_19
   gem 'timecop'
 end
