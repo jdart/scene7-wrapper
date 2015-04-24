@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem 'savon'
+gem 'savon', "~> 1.2"
 gem 'httpclient'
 gem 'activesupport'
 gem 'i18n'
