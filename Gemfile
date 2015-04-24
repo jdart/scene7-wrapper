@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem 'savon', "~> 1.2"
+gem 'savon', "~>0.8.6"
 gem 'httpclient'
 gem 'activesupport'
 gem 'i18n'
@@ -13,10 +13,4 @@ group :development, :test do
   gem "savon_spec"
   gem "mocha"
   gem 'timecop'
-end
-
-group :development do
-  gem "ruby-debug", :platform => :mri_18
-  gem "ruby-debug19", :platform => :mri_19
-  gem "jeweler", "~> 1.5.2"
 end
